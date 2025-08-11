@@ -1,30 +1,6 @@
-# Next.js Random Generator
+# 随机项生成程序
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+支持添加，修改和删除随机项，可用于选择菜单等日常用途
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/wood3ns-projects/v0-next-js-random-generator)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/UsBxl5D3Uyr)
+![PixPin_2025-08-11_11-55-58](https://github.com/user-attachments/assets/45f40e3d-a4d3-4842-aa15-2ec4b9e0fa31)
 
-## Overview
-
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
-
-## Deployment
-
-Your project is live at:
-
-**[https://vercel.com/wood3ns-projects/v0-next-js-random-generator](https://vercel.com/wood3ns-projects/v0-next-js-random-generator)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/UsBxl5D3Uyr](https://v0.dev/chat/projects/UsBxl5D3Uyr)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
