@@ -6,9 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Trash2, Edit, Plus, Shuffle, Save, X, Search, RotateCcw, Check } from "lucide-react"
+import { Trash2, Edit, Plus, LucideShuffle, Save, X, Search, Check } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import { Textarea } from "@/components/ui/textarea"
+import { shuffle } from "es-toolkit"
 
 interface Item {
   id: string
@@ -125,20 +126,23 @@ export default function RandomItemSelector() {
     setIsSelecting(true)
     setSelectedItem(null)
 
+    // Shuffle the items array to get a random order
+    const shuffledItems = shuffle(items)
+
     // 添加选择动画效果
     let counter = 0
     const maxCounter = 20 + Math.floor(Math.random() * 10) // 20-30次快速切换
 
     const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * items.length)
-      setSelectedItem(items[randomIndex])
+      // Use shuffled items for animation
+      const randomIndex = Math.floor(Math.random() * shuffledItems.length)
+      setSelectedItem(shuffledItems[randomIndex])
       counter++
 
       if (counter >= maxCounter) {
         clearInterval(interval)
-        // 最终选择
-        const finalIndex = Math.floor(Math.random() * items.length)
-        const finalSelected = items[finalIndex]
+        // 最终选择: 使用 shuffle 后的第一个元素作为最终结果
+        const finalSelected = shuffledItems[0]
         setSelectedItem(finalSelected)
         setIsSelecting(false)
 
@@ -388,12 +392,12 @@ export default function RandomItemSelector() {
               >
                 {isSelecting ? (
                   <>
-                    <Shuffle className="w-6 h-6 mr-2 animate-spin" />
+                    <LucideShuffle className="w-6 h-6 mr-2 animate-spin" />
                     选择中...
                   </>
                 ) : (
                   <>
-                    <Shuffle className="w-6 h-6 mr-2" />
+                    <LucideShuffle className="w-6 h-6 mr-2" />
                     随机选择
                   </>
                 )}
@@ -492,7 +496,12 @@ export default function RandomItemSelector() {
                         <Save className="w-4 h-4 mr-2" />
                         添加
                       </Button>
-                      <Button type="button" variant="outline" onClick={resetForm} className="flex-1 sm:flex-none">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={resetForm}
+                        className="flex-1 sm:flex-none bg-transparent"
+                      >
                         <X className="w-4 h-4 mr-2" />
                         取消
                       </Button>
@@ -518,7 +527,7 @@ export default function RandomItemSelector() {
                   </div>
 
                   <div className="flex gap-2">
-                    <Button onClick={handlePasteText} variant="outline" className="flex-1">
+                    <Button onClick={handlePasteText} variant="outline" className="flex-1 bg-transparent">
                       解析文本
                     </Button>
                     <Button onClick={cancelPasteImport} variant="ghost">
@@ -617,7 +626,7 @@ export default function RandomItemSelector() {
                   <h3 className="text-lg font-medium mb-2">未找到匹配项目</h3>
                   <p className="text-sm mb-4">尝试使用其他关键词搜索</p>
                   <Button onClick={clearSearch} variant="outline">
-                    <RotateCcw className="w-4 h-4 mr-2" />
+                    <LucideShuffle className="w-4 h-4 mr-2" />
                     清空搜索
                   </Button>
                 </div>
